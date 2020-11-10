@@ -16,7 +16,7 @@
       </li>
 <ng-container *ngFor="let image of images; let i = index;">
       <li class="page-item" 
-      [ngClass] =" {active: i===currentPage}"
+      [appCustomStyles] =" {active: i===currentPage}"
        *ngIf="checkWindowIndex(i)">
         <a class="page-link" (click)="currentPage = i">
           {{i}}
@@ -25,8 +25,8 @@
     </ng-container >
 
       <li class="page-item"
-      appCustomClassDirective
-      [ngClass]="{disabled: currentPage=== images.length-1}">
+      [appCustomClassDirective] = "'bold'"     
+       [ngClass]="{disabled: currentPage=== images.length-1}">
         <a class="page-link">Next</a>
       </li>
     </ul>
@@ -51,5 +51,9 @@
  </div>
   </div>
 
+  <!--custom structural directive example-->
+ <ul *appCustomDirectiveTimes="5;  let j = custom_index;">
+   <li>Hi there! {{'index: '+ j}}</li>
+ </ul>
 </body>
 </html>

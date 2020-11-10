@@ -14,4 +14,9 @@ export class CustomClassDirectiveDirective {
     this.element.nativeElement.style.backgroundColor= bgColor;
   }
 
+  @Input('appCustomClassDirective') 
+  set boldText(textweight: string){
+    this.element.nativeElement.style.fontWeight = textweight;
+  }
+
 }
