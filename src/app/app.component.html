@@ -17,7 +17,7 @@
 <ng-container *ngFor="let image of images; let i = index;">
       <li class="page-item" 
       [ngClass] =" {active: i===currentPage}"
-       *ngIf="i < 5">
+       *ngIf="checkWindowIndex(i)">
         <a class="page-link" (click)="currentPage = i">
           {{i}}
         </a>
@@ -25,10 +25,31 @@
     </ng-container >
 
       <li class="page-item"
+      appCustomClassDirective
       [ngClass]="{disabled: currentPage=== images.length-1}">
         <a class="page-link">Next</a>
       </li>
     </ul>
   </nav>
+  
+  <div appCustomClassDirective [backgroundcolor]="'green'">
+    <h2>{{images[currentPage].title}}</h2>
+    <img [src]="images[currentPage].url"/>
+  </div>
+
+  <div [ngSwitch]="currentPage">
+    <div *ngSwitchCase= "0">
+       Here is the zero url
+    </div>
+
+    <div *ngSwitchCase= "1">
+      Here is the one url
+   </div>
+
+   <div *ngSwitschDefault>
+    Here is the default url
+ </div>
+  </div>
+
 </body>
 </html>
